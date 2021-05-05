@@ -1,0 +1,9 @@
+{
+  "name": "tellme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "bin": "./index.js",
+  "author": "",
+  "license": "ISC"
+}
