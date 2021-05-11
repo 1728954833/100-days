@@ -1,0 +1,33 @@
+1. webpack的构建的流程主要有哪些环节?
+答: 
+    1. 执行npx webpack时会先进入node_modules下面的bin文件下寻找对应的文件执行之后,找到webpack下的bin再去执行。执行后找到webpack-cli下执行这里执行
+    2. 在webpack-cli里面的cli.js执行传入用户输入的配置文件到webpack方法, webpack里面就是webpack主要的逻辑
+    3. webpack里面会首先创建一个complier(主要用于挂载用户配置的一些信息和执行过程中需要的生命周期钩子)
+    4. complier执行NodeEnvironmentPlugin插件挂载对应的文件读写能力的
+    5. 查看配置里面的plugin如果有则循环执行配置里面的所有plugin
+    6. 执行挂载webpack内部默认的plugin读取到对应的entry文件并且监听对应的钩子
+    7. 冲入口文件开始遍历文件拿到文件匹配到对应的loader进行编译
+    8. 根据模块之间的关系分为不同的chunk，把每个chunk在转换成单个文件加入到输出列表
+    9. 根据配置的输出路径，输出对应的内容
+    (并没有太理解,在平时先熟悉下基本的webpack,后面还会回来看看)
+
+2. Loader 和 Plugin 有哪些不同
+loader主要用于对不同文件做中间处理在输出
+plugin则可以在整个webpack执行过程中调用不同的钩子函数来做你想要增强的事
+
+loader:
+    module.exports = function(source) {
+        // 在这里对源文件做处理
+        return source;
+    };
+
+plugin:
+    class BasicPlugin{
+        constructor(options){
+            // 在构造函数中获取用户给该插件传入的配置
+        }
+
+        apply(compiler){
+            // 通过核心的complier对编译过程进行加强
+        }
+    }
