@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>{{title}}</h1>
+        <h2 v-text='msg'></h2>
+        <input v-model='input'></input>
+        <h3>{{input}}</h3>
+        <h4>{{obj.x}}</h4>
+        <h5 v-html="<div>123</div>"></h5>
+        <h6 v-on="{click: onClick}">1111</h6>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#root',
+            methods: {
+                onClick() {
+                    console.log(111)
+                }
+            },
+            data: {
+                title: 'hello',
+                msg: 'msg',
+                input: 'input',
+                obj: {
+                    x: '1'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

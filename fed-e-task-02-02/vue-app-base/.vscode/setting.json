@@ -1,17 +1,47 @@
-  {
-      "eslint.enable": true,
-      "eslint.autoFixOnSave": true,
-      "eslint.run": "onType",
-      "eslint.options": {
-          "extensions": [".js", ".vue"]
-      },
-      "eslint.validate": [
-          {
-              "language": "vue",
-              "autoFix": true
-          },
-          "javascript",
-          "html",
-          "vue-html"
-      ]
-  }
+{
+    "terminal.integrated.rendererType": "dom",
+    "workbench.colorTheme": "Material Theme High Contrast",
+    "files.autoSave": "afterDelay",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "iceworks.materialSources": [],
+    "vscode-mysql.resultTheme": "Dark",
+    "javascript.validate.enable": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "previewServer.port": 3333,
+    "eslint.validate": [
+        "javascript",
+        "typescript"
+    ],
+    "eslint.codeAction.showDocumentation": {
+
+        "enable": true
+    },
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": false,
+    "prettier.semi": true,
+    "prettier.arrowParens": "avoid",
+    "prettier.useEditorConfig": false,
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "prettier.enable": true,
+    "previewServer.ui": {
+    
+    },
+    "emmet.excludeLanguages": [
+
+        "markdown"
+    ],
+    "editor.fontSize": 20,
+    "editor.fontLigatures": null
+}

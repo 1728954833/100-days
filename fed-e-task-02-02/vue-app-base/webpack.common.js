@@ -1,9 +1,9 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
     entry: "./src/main.js",
@@ -32,40 +32,46 @@ module.exports = {
                             limit: 1024,
                             fallback: "file-loader",
                             // 处理文件为[object%20Module]
-                            esModule: false
+                            esModule: false,
                         },
                     },
                 ],
             },
             {
-              test: /\.js$/,
-              use: {
-                loader: 'babel-loader',
-                options: {
-                  presets: ['@babel/preset-env']
-                }
-              }
+                test: /\.js$/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env"],
+                    },
+                },
             },
             {
                 test: /\.vue$/,
                 use: "vue-loader",
             },
+          {
+              test: /\.vue$/,
+              exclude: /node_modules/,
+              use: "eslint-loader",
+              enforce: "pre",
+          },
         ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './public/index.html',
-        favicon: './public/favicon.ico',
-        options: {
-          title: 'dm',
-          url: 'test'
-        }
-      }),
-      new CleanWebpackPlugin(),
-      new VueLoaderPlugin(),
-      // 抽离css
-      new MiniCssExtractPlugin(),
-      // 压缩抽离后的css
-      new OptimizeCssAssetsPlugin()
-    ]
+        new HtmlWebpackPlugin({
+            template: "./public/index.html",
+            favicon: "./public/favicon.ico",
+            options: {
+                title: "dm",
+                url: "test",
+            },
+        }),
+        new CleanWebpackPlugin(),
+        new VueLoaderPlugin(),
+        // 抽离css
+        new MiniCssExtractPlugin(),
+        // 压缩抽离后的css
+        new OptimizeCssAssetsPlugin(),
+    ],
 };
